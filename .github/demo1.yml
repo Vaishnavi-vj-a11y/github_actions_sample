@@ -1,0 +1,14 @@
+name: Commit mesage workflow -vaishnavi
+on:
+  push:
+    branches: ["main"]
+ 
+jobs:
+  deploy-daniel:
+    if: contains(github.event.head_commit.message, '[deploy]')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+      - uses: actions/checkout@v3
+      - name: Run this script
+        run: echo "deploy this application"
