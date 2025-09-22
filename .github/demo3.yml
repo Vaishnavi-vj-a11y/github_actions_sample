@@ -1,0 +1,17 @@
+name: Environment variables-vaishnavi
+on:
+  workflow_dispatch:
+  
+env:
+  DAY_OF_THE_WEEK: Monday
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    env:
+      Greeting:Hello
+steps:
+  - name:Environment declaration
+    run: echo "Greeting $First name . Today is $DAY_OF_THE_WEEK"
+    env:
+      First_name: Vaishnavi 
+      
