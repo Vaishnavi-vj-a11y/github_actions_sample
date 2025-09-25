@@ -1,0 +1,32 @@
+name: Python_script
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          repository: CosmosGenAI/promptGPT
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          sudo apt update && sudo apt upgrade -y
+          pip install --upgrade pip
+          pip install dataset pandas
+
+      - name: Run application
+        run: |
+          python your_script.py
